@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { getCurrentUser, hasRole, logout } from '../utils/auth';
-import { getEquipments, getUsedEquipments, getDamagedEquipments, getIssuedEquipments, getOverdueEquipments, getLogs, getEquipmentRequests, getSelectionFeedback } from '../utils/localStorage';
+import { getEquipments, getUsedEquipments, getDamagedEquipments, getIssuedEquipments, getOverdueEquipments, getLogs, getEquipmentRequests } from '../utils/localStorage';
 
 const ManagerDashboard = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const ManagerDashboard = () => {
     pendingRequests: 0,
     totalQuantity: 0,
     availableQuantity: 0,
-    pendingFeedback: 0,
+    pendingFeedback: 0, // Removed student feedback count
     mainInventoryCount: 0,
     usedInventoryCount: 0,
     consumableCount: 0,
@@ -43,13 +43,10 @@ const ManagerDashboard = () => {
     const overdue = getOverdueEquipments();
     const logs = getLogs();
     const requests = getEquipmentRequests();
-    const feedback = getSelectionFeedback();
-
     const mainQty = equipments.reduce((sum, eq) => sum + parseInt(eq.quantity || 0), 0);
     const usedQty = usedEquipments.reduce((sum, eq) => sum + parseInt(eq.quantity || 0), 0);
     const totalQty = mainQty + usedQty;
     const pendingRequests = requests.filter(req => req.status === 'pending').length;
-    const pendingFeedback = feedback.filter(item => item.status === 'pending').length;
 
     // Count consumable vs non-consumable equipment
     const allEquipment = [...equipments, ...usedEquipments];
@@ -64,7 +61,7 @@ const ManagerDashboard = () => {
       pendingRequests: pendingRequests,
       totalQuantity: totalQty,
       availableQuantity: totalQty,
-      pendingFeedback: pendingFeedback,
+      pendingFeedback: 0, // Removed student feedback count
       mainInventoryCount: equipments.length,
       usedInventoryCount: usedEquipments.length,
       consumableCount: consumableCount,
@@ -135,24 +132,12 @@ const ManagerDashboard = () => {
       value: stats.logsCount,
       icon: (
         <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 002 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       ),
       subtext: 'Complete history',
       gradient: 'from-purple-500 to-purple-700',
       link: '/logs'
-    },
-    {
-      title: 'Pending Feedback',
-      value: stats.pendingFeedback,
-      icon: (
-        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
-        </svg>
-      ),
-      subtext: 'Student feedback',
-      gradient: 'from-red-500 to-red-700',
-      link: '/admin-feedback'
     }
   ];
 
