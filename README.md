@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Sports Inventory Management System
 
 A complete React + Tailwind CSS application for managing sports equipment inventory using localStorage (no backend required).
@@ -70,3 +71,7 @@ MIT
 ---
 
 Built with ❤️ for efficient sports equipment management
+=======
+# Gymkhana_Inventory_Management
+Inventory Management System
+>>>>>>> b1ada54b46a3f690429142a9a4a4815f9aabaf41
