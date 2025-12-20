@@ -111,33 +111,6 @@ export const loginManager = (username, password) => {
 };
 
 /**
- * Student Login
- * Authenticates student using registration number and password
- */
-export const loginStudent = (registrationNumber, password) => {
-  const users = getUsers();
-  const student = users.find(
-    u => u.registrationNumber === registrationNumber && u.password === password && u.role === USER_ROLES.STUDENT
-  );
-  
-  if (student) {
-    const studentUser = {
-      id: student.id,
-      registrationNumber: student.registrationNumber,
-      role: student.role,
-      name: student.name,
-      email: student.email,
-      branch: student.branch,
-      semester: student.semester,
-      loginTime: new Date().toISOString()
-    };
-    setCurrentUser(studentUser);
-    return { success: true, user: studentUser };
-  }
-  return { success: false, message: 'Invalid student credentials' };
-};
-
-/**
  * Student Registration
  * Creates new student account with validation
  */
@@ -156,6 +129,11 @@ export const registerStudent = (studentData) => {
     return { success: false, message: 'Email already registered' };
   }
   
+  // Check if email belongs to kletech.ac.in domain
+  if (!studentData.email.endsWith('@kletech.ac.in')) {
+    return { success: false, message: 'Email must be from kletech.ac.in domain' };
+  }
+  
   const newStudent = {
     id: `student_${Date.now()}`,
     role: USER_ROLES.STUDENT,
@@ -167,6 +145,34 @@ export const registerStudent = (studentData) => {
   saveUsers(users);
   
   return { success: true, message: 'Registration successful! You can now login.' };
+};
+
+/**
+ * Student Login
+ * Authenticates student using registration number and password
+ */
+export const loginStudent = (registrationNumber, password) => {
+  const users = getUsers();
+  const student = users.find(
+    u => u.registrationNumber === registrationNumber && u.password === password && u.role === USER_ROLES.STUDENT
+  );
+  
+  if (student) {
+    const studentUser = {
+      id: student.id,
+      registrationNumber: student.registrationNumber,
+      role: student.role,
+      name: student.name,
+      email: student.email,
+      branch: student.branch,
+      semester: student.semester,
+      phone: student.phone, // Include phone number in session data
+      loginTime: new Date().toISOString()
+    };
+    setCurrentUser(studentUser);
+    return { success: true, user: studentUser };
+  }
+  return { success: false, message: 'Invalid student credentials' };
 };
 
 /**
@@ -186,6 +192,11 @@ export const createManagerAccount = (managerData) => {
   const emailExists = users.find(u => u.email === managerData.email);
   if (emailExists) {
     return { success: false, message: 'Email already registered' };
+  }
+  
+  // Check if email belongs to kletech.ac.in domain
+  if (!managerData.email.endsWith('@kletech.ac.in')) {
+    return { success: false, message: 'Email must be from kletech.ac.in domain' };
   }
   
   const newManager = {

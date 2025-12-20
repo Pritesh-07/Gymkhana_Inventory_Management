@@ -48,7 +48,7 @@ const SportSelectionFeedback = () => {
       email: user.email || '',
       branch: user.branch || '',
       semester: user.semester || '',
-      contactNumber: user.contactNumber || user.phone || ''
+      contactNumber: user.phone || '' // Use phone field instead of contactNumber
     }));
   }, [navigate]);
 
@@ -92,7 +92,7 @@ const SportSelectionFeedback = () => {
         branch: currentUser.branch || '',
         semester: currentUser.semester || '',
         email: currentUser.email || '',
-        contactNumber: currentUser.contactNumber || currentUser.phone || '',
+        contactNumber: currentUser.phone || '', // Use phone field instead of contactNumber
         collegeName: '',
         gameParticipated: '',
         noticeAdvance: 3,
@@ -112,11 +112,11 @@ const SportSelectionFeedback = () => {
 
   return (
     <div className="min-h-screen pt-16 bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-primary to-primary-dark text-white py-8">
+      {/* Refined Red Header */}
+      <div className="bg-red-100 border-b border-red-200 py-4">
         <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-3xl font-bold mb-2">Sport Team Selection Feedback</h1>
-          <p className="text-gray-100">Help us improve future selection processes with your valuable feedback</p>
+          <h1 className="text-2xl font-bold text-red-800">Sport Team Selection Feedback</h1>
+          <p className="text-red-600">Help us improve future selection processes with your valuable feedback</p>
         </div>
       </div>
 

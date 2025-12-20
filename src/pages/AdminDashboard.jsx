@@ -135,56 +135,39 @@ const AdminDashboard = () => {
 
   return (
     <div className="min-h-screen pt-16 bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-primary to-primary-dark text-white py-8">
+      {/* Refined Red Header */}
+      <div className="bg-red-100 border-b border-red-200 py-4">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-3xl font-bold mb-2">Admin Dashboard</h1>
-              <p className="text-gray-100">Welcome back, {currentUser.name}</p>
-            </div>
-            <div className="flex gap-3">
-              <Link
-                to="/damaged-equipment"
-                className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold transition flex items-center gap-2"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-                Damaged Equipment
-              </Link>
-              <button
-                onClick={handleLogout}
-                className="bg-white text-primary px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition"
-              >
-                Logout
-              </button>
+              <h1 className="text-2xl font-bold text-red-800">Admin Dashboard</h1>
+              <p className="text-red-600">Welcome back, {currentUser.name}</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="max-w-7xl mx-auto px-4 -mt-6 mb-8">
+      <div className="max-w-7xl mx-auto px-4 mt-6 mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Managers Card - Clickable */}
           <div 
             onClick={() => handleViewAllUsers('managers')}
-            className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transform hover:scale-105 transition-all"
+            className="bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow-lg p-5 cursor-pointer hover:shadow-xl transform hover:scale-105 transition-all"
           >
             <div className="flex items-center justify-between text-white">
               <div>
-                <p className="text-blue-100 text-sm font-medium mb-1">Total Managers</p>
-                <p className="text-4xl font-bold">{stats.totalManagers}</p>
-                <p className="text-blue-100 text-sm mt-2 flex items-center gap-1">
+                <p className="text-red-100 text-sm font-medium mb-1">Total Managers</p>
+                <p className="text-3xl font-bold">{stats.totalManagers}</p>
+                <p className="text-red-100 text-xs mt-1 flex items-center gap-1">
                   Click to view all
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded-lg">
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-white bg-opacity-20 p-3 rounded-lg">
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
@@ -194,21 +177,21 @@ const AdminDashboard = () => {
           {/* Students Card - Clickable */}
           <div 
             onClick={() => handleViewAllUsers('students')}
-            className="bg-gradient-to-br from-green-500 to-green-600 rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transform hover:scale-105 transition-all"
+            className="bg-gradient-to-br from-red-600 to-red-700 rounded-lg shadow-lg p-5 cursor-pointer hover:shadow-xl transform hover:scale-105 transition-all"
           >
             <div className="flex items-center justify-between text-white">
               <div>
-                <p className="text-green-100 text-sm font-medium mb-1">Total Students</p>
-                <p className="text-4xl font-bold">{stats.totalStudents}</p>
-                <p className="text-green-100 text-sm mt-2 flex items-center gap-1">
+                <p className="text-red-100 text-sm font-medium mb-1">Total Students</p>
+                <p className="text-3xl font-bold">{stats.totalStudents}</p>
+                <p className="text-red-100 text-xs mt-1 flex items-center gap-1">
                   Click to view all
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded-lg">
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-white bg-opacity-20 p-3 rounded-lg">
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
@@ -378,8 +361,10 @@ const AdminDashboard = () => {
                   value={managerForm.email}
                   onChange={(e) => setManagerForm({ ...managerForm, email: e.target.value })}
                   className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="user@kletech.ac.in"
                   required
                 />
+                <p className="text-sm text-gray-500 mt-1">Must be a KLE Tech email (@kletech.ac.in)</p>
               </div>
               <div>
                 <label className="block text-gray-700 font-semibold mb-2">Phone</label>

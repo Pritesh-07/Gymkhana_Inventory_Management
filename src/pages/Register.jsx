@@ -109,6 +109,7 @@ const Register = () => {
                   placeholder="your.email@kletech.ac.in"
                   required
                 />
+                <p className="text-sm text-gray-500 mt-1">Must be a KLE Tech email (@kletech.ac.in)</p>
               </div>
 
               {/* Phone */}

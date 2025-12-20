@@ -91,16 +91,16 @@ const AdminFeedback = () => {
 
   return (
     <div className="min-h-screen pt-16 bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-primary to-primary-dark text-white py-8">
+      {/* Refined Red Header */}
+      <div className="bg-red-100 border-b border-red-200 py-4">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center flex-wrap gap-4">
             <div>
-              <h1 className="text-3xl font-bold mb-2">Sport Selection Feedback</h1>
-              <p className="text-gray-100">Manage and review sport team selection feedback from students</p>
+              <h1 className="text-2xl font-bold text-red-800">Sport Selection Feedback</h1>
+              <p className="text-red-600">Manage and review sport team selection feedback from students</p>
             </div>
-            <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2">
-              <p className="text-white font-semibold">
+            <div className="bg-red-200 rounded-lg px-4 py-2">
+              <p className="text-red-800 font-semibold">
                 Total Feedback: <span className="text-xl">{feedback.length}</span>
               </p>
             </div>

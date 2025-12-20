@@ -100,7 +100,7 @@ const ManagerDashboard = () => {
         </svg>
       ),
       subtext: 'Items in inventory',
-      gradient: 'from-blue-500 to-blue-700',
+      gradient: 'from-red-500 to-red-600',
       link: '/equipments'
     },
     {
@@ -143,26 +143,18 @@ const ManagerDashboard = () => {
 
   return (
     <div className="min-h-screen pt-16 bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-primary to-primary-dark text-white py-8">
+      {/* Refined Red Header */}
+      <div className="bg-red-100 border-b border-red-200 py-4">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold mb-2">Manager Dashboard</h1>
-              <p className="text-gray-100">Welcome back, {currentUser.name}</p>
-            </div>
-            <button
-              onClick={handleLogout}
-              className="bg-white text-primary px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition"
-            >
-              Logout
-            </button>
+          <div>
+            <h1 className="text-2xl font-bold text-red-800">Manager Dashboard</h1>
+            <p className="text-red-600">Welcome back, {currentUser.name}</p>
           </div>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="max-w-7xl mx-auto px-4 -mt-6 mb-8">
+      <div className="max-w-7xl mx-auto px-4 mt-6 mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
           {statsCards.map((card, index) => (
             <Link
@@ -198,82 +190,96 @@ const ManagerDashboard = () => {
       <div className="max-w-7xl mx-auto px-4 pb-8">
         <div className="bg-white rounded-2xl shadow-xl p-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">Quick Actions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             <Link
               to="/manager-requests"
-              className="bg-gradient-to-br from-yellow-500 to-yellow-600 text-white p-6 rounded-xl hover:shadow-lg transition-all transform hover:scale-105"
+              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-in-out transform hover:-translate-y-1 flex flex-col items-center text-center group"
             >
-              <svg className="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <h3 className="font-bold text-lg">Review Requests</h3>
-              <p className="text-sm text-yellow-100 mt-1">Approve/deny equipment requests</p>
+              <div className="bg-amber-100 p-3 rounded-full mb-4 group-hover:bg-amber-200 transition-colors duration-200">
+                <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-lg text-gray-800 mb-2">Review Requests</h3>
+              <p className="text-sm text-gray-600">Approve/deny equipment requests</p>
             </Link>
 
             <Link
               to="/equipments"
-              className="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-xl hover:shadow-lg transition-all transform hover:scale-105"
+              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-in-out transform hover:-translate-y-1 flex flex-col items-center text-center group"
             >
-              <svg className="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-              </svg>
-              <h3 className="font-bold text-lg">Manage Equipments</h3>
-              <p className="text-sm text-blue-100 mt-1">Add, edit, view inventory</p>
+              <div className="bg-blue-100 p-3 rounded-full mb-4 group-hover:bg-blue-200 transition-colors duration-200">
+                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-lg text-gray-800 mb-2">Manage Equipments</h3>
+              <p className="text-sm text-gray-600">Add, edit, view inventory</p>
             </Link>
 
             <Link
               to="/issued"
-              className="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-6 rounded-xl hover:shadow-lg transition-all transform hover:scale-105"
+              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-in-out transform hover:-translate-y-1 flex flex-col items-center text-center group"
             >
-              <svg className="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-              </svg>
-              <h3 className="font-bold text-lg">View Issued</h3>
-              <p className="text-sm text-orange-100 mt-1">Track issued items</p>
+              <div className="bg-orange-100 p-3 rounded-full mb-4 group-hover:bg-orange-200 transition-colors duration-200">
+                <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-lg text-gray-800 mb-2">View Issued</h3>
+              <p className="text-sm text-gray-600">Track issued items</p>
             </Link>
 
             <Link
               to="/overdue"
-              className="bg-gradient-to-br from-red-500 to-red-600 text-white p-6 rounded-xl hover:shadow-lg transition-all transform hover:scale-105"
+              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-in-out transform hover:-translate-y-1 flex flex-col items-center text-center group"
             >
-              <svg className="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <h3 className="font-bold text-lg">Overdue Items</h3>
-              <p className="text-sm text-red-100 mt-1">Manage overdue returns</p>
+              <div className="bg-red-100 p-3 rounded-full mb-4 group-hover:bg-red-200 transition-colors duration-200">
+                <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-lg text-gray-800 mb-2">Overdue Items</h3>
+              <p className="text-sm text-gray-600">Manage overdue returns</p>
             </Link>
 
             <Link
               to="/damaged-equipment"
-              className="bg-gradient-to-br from-yellow-600 to-yellow-700 text-white p-6 rounded-xl hover:shadow-lg transition-all transform hover:scale-105"
+              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-in-out transform hover:-translate-y-1 flex flex-col items-center text-center group"
             >
-              <svg className="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg>
-              <h3 className="font-bold text-lg">Damaged Equipment</h3>
-              <p className="text-sm text-yellow-100 mt-1">View damaged inventory</p>
+              <div className="bg-amber-100 p-3 rounded-full mb-4 group-hover:bg-amber-200 transition-colors duration-200">
+                <svg className="w-8 h-8 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-lg text-gray-800 mb-2">Damaged Equipment</h3>
+              <p className="text-sm text-gray-600">View damaged inventory</p>
             </Link>
 
             <Link
               to="/logs"
-              className="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-6 rounded-xl hover:shadow-lg transition-all transform hover:scale-105"
+              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-in-out transform hover:-translate-y-1 flex flex-col items-center text-center group"
             >
-              <svg className="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-              <h3 className="font-bold text-lg">View Logs</h3>
-              <p className="text-sm text-purple-100 mt-1">Complete transaction history</p>
+              <div className="bg-purple-100 p-3 rounded-full mb-4 group-hover:bg-purple-200 transition-colors duration-200">
+                <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 002 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-lg text-gray-800 mb-2">View Logs</h3>
+              <p className="text-sm text-gray-600">Complete transaction history</p>
             </Link>
 
             <Link
               to="/procurement-list"
-              className="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-xl hover:shadow-lg transition-all transform hover:scale-105"
+              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-in-out transform hover:-translate-y-1 flex flex-col items-center text-center group"
             >
-              <svg className="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-              </svg>
-              <h3 className="font-bold text-lg">Procurement List</h3>
-              <p className="text-sm text-green-100 mt-1">Add new equipment to inventory</p>
+              <div className="bg-green-100 p-3 rounded-full mb-4 group-hover:bg-green-200 transition-colors duration-200">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-lg text-gray-800 mb-2">Procurement List</h3>
+              <p className="text-sm text-gray-600">Add new equipment to inventory</p>
             </Link>
           </div>
         </div>

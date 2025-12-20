@@ -64,27 +64,19 @@ const StudentDashboard = () => {
 
   return (
     <div className="min-h-screen pt-16 bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-primary to-primary-dark text-white py-8">
+      {/* Refined Red Header */}
+      <div className="bg-red-100 border-b border-red-200 py-4">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center flex-wrap gap-4">
-            <div>
-              <h1 className="text-3xl font-bold mb-2">Student Dashboard</h1>
-              <p className="text-gray-100">Welcome, {currentUser.name}</p>
-              <p className="text-sm text-gray-200">{currentUser.registrationNumber} | {currentUser.branch}</p>
-            </div>
-            <button
-              onClick={handleLogout}
-              className="bg-white text-primary px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition"
-            >
-              Logout
-            </button>
+          <div>
+            <h1 className="text-2xl font-bold text-red-800">Student Dashboard</h1>
+            <p className="text-red-600">Welcome, {currentUser.name}</p>
+            <p className="text-sm text-red-500">{currentUser.registrationNumber} | {currentUser.branch}</p>
           </div>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="max-w-7xl mx-auto px-4 -mt-6 mb-8">
+      <div className="max-w-7xl mx-auto px-4 mt-6 mb-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white rounded-2xl shadow-xl p-6">
             <div className="flex items-center justify-between">
@@ -139,18 +131,18 @@ const StudentDashboard = () => {
         <div className="mb-6 flex flex-wrap gap-4">
           <Link
             to="/student-equipments"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:shadow-lg transition transform hover:scale-105"
+            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
             </svg>
             Browse Equipment
           </Link>
           <Link
             to="/request-equipment"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-dark text-white px-8 py-4 rounded-xl font-bold hover:shadow-lg transition transform hover:scale-105"
+            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
             Quick Request

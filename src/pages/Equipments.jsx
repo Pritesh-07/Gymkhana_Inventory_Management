@@ -412,7 +412,7 @@ Enter quantity to move:`,
                         {currentUser?.role === 'admin' && (
                             <button
                                 onClick={() => setShowProcurementList(!showProcurementList)}
-                                className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-purple-700 transition-all shadow-md flex items-center gap-2"
+                                className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-md flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -424,7 +424,7 @@ Enter quantity to move:`,
                         {(currentUser?.role === 'admin' || currentUser?.role === 'manager') && (
                             <button
                                 onClick={() => setShowRequests(!showRequests)}
-                                className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-indigo-600 hover:to-indigo-700 transition-all shadow-md flex items-center gap-2 relative"
+                                className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-md flex items-center gap-2 relative focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
@@ -506,12 +506,12 @@ Enter quantity to move:`,
                             <h2 className="text-2xl font-bold text-gray-800">Procurement List</h2>
                             <button
                                 onClick={handleExportProcurementToPDF}
-                                className="bg-green-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700 transition-all shadow-md flex items-center gap-2"
+                                className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-md flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                 </svg>
-                                Export to PDF
+                                📄 Export to PDF
                             </button>
                         </div>
                         <div className="overflow-x-auto">
@@ -768,137 +768,100 @@ Enter quantity to move:`,
                 {/* Equipment List */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {filteredEquipments.length === 0 ? (
-                        <div className="col-span-full text-center py-16">
-                            <div className="text-6xl mb-4">🏅</div>
-                            <p className="text-gray-500 text-xl font-semibold mb-2">
-                                No equipments found
-                            </p>
-                            <p className="text-gray-400">
-                                Add your first equipment to get started!
-                            </p>
+                        <div className="bg-white rounded-lg shadow-md p-12 text-center">
+                            <svg className="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                            </svg>
+                            <p className="text-gray-500 text-lg">No equipment found</p>
                         </div>
                     ) : (
                         filteredEquipments.map((equipment) => (
                             <div
                                 key={equipment.id}
-                                className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-1"
+                                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all overflow-hidden"
                             >
-                                {/* Image */}
-                                <div className="relative overflow-hidden">
-                                    {equipment.image ? (
-                                        <div className="w-full h-48 bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center">
-                                            <span className="text-7xl">🏅</span>
-                                        </div>
-                                    ) : (
-                                        <div className="w-full h-48 bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center">
-                                            <span className="text-7xl">🏅</span>
-                                        </div>
-                                    )}
-                                    {/* Badges removed as requested */}
-                                </div>
-
-                                {/* Content */}
                                 <div className="p-6">
-                                    <h3 className="text-xl font-bold text-gray-800 mb-3 truncate">
-                                        {equipment.name}
-                                    </h3>
-
-                                    <div className="space-y-2 mb-4">
-                                        <div className="flex items-center gap-2 text-gray-600">
-                                            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                                            </svg>
-                                            <span className="font-semibold">{equipment.sportType}</span>
-                                        </div>
-                                        {equipment.category && (
-                                            <div className="flex items-center gap-2 text-gray-600">
-                                                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                                                </svg>
-                                                <span>{equipment.category}</span>
-                                            </div>
-                                        )}
-                                        <div className="flex items-center gap-2 text-gray-600">
-                                            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                                            </svg>
-                                            <span className="font-semibold text-lg">{equipment.quantity} available</span>
-                                        </div>
+                                    {/* Equipment Header */}
+                                    <div className="mb-4">
+                                        <h3 className="text-xl font-bold text-gray-800 mb-1">{equipment.name}</h3>
+                                        <p className="text-sm text-gray-600">{equipment.sportType}</p>
                                     </div>
 
-                                    {/* Action Buttons - Only for Managers */}
-                                    {currentUser?.role === 'manager' && (
-                                        <div className="flex flex-col gap-2">
-                                            {/* Request Move to Used Button - Only for Main Inventory */}
-                                            {inventoryType === 'main' && (
-                                                <button
-                                                    onClick={() => handleRequestMoveToUsed(equipment)}
-                                                    className="w-full bg-gradient-to-r from-purple-500 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-purple-600 hover:to-purple-700 transition-all transform hover:scale-105 shadow-md flex items-center justify-center gap-2"
-                                                >
-                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                                                    </svg>
-                                                    Request Move to Used
-                                                </button>
-                                            )}
-                                            {/* Mark as Damaged Button - Only for Issue Counter */}
-                                            {inventoryType === 'used' && (
-                                                <button
-                                                    onClick={() => handleMarkAsDamaged(equipment)}
-                                                    className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 transition-all transform hover:scale-105 shadow-md flex items-center justify-center gap-2"
-                                                >
-                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                                                    </svg>
-                                                    Mark Damaged
-                                                </button>
-                                            )}
-                                            <div className="flex gap-2">
-                                                <button
-                                                    onClick={() => handleEdit(equipment)}
-                                                    className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-blue-600 hover:to-blue-700 transition-all transform hover:scale-105 shadow-md flex items-center justify-center gap-1"
-                                                >
-                                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                                    </svg>
-                                                    Edit
-                                                </button>
-                                                <button
-                                                    onClick={() => handleDelete(equipment.id)}
-                                                    className="flex-1 bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition-all transform hover:scale-105 shadow-md flex items-center justify-center gap-1"
-                                                >
-                                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                    </svg>
-                                                    Delete
-                                                </button>
-                                            </div>
-                                            {/* Request Borrow - Student Only & Issue Counter Only */}
-                                            {inventoryType === 'used' && currentUser?.role === 'student' && (
-                                                <button
-                                                    onClick={() => handleStudentRequest(equipment)}
-                                                    className="w-full mt-2 bg-green-50 text-green-600 border border-green-200 px-4 py-2 rounded-lg font-semibold hover:bg-green-100 hover:border-green-300 transition-all flex items-center justify-center gap-2"
-                                                >
-                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                                                    </svg>
-                                                    Request to Borrow
-                                                </button>
-                                            )}
+                                    {/* Equipment Details */}
+                                    <div className="space-y-2 mb-4">
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-gray-600 text-sm">Category:</span>
+                                            <span className="font-semibold text-gray-800">{equipment.category || 'General'}</span>
                                         </div>
-                                    )}
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-gray-600 text-sm">Available:</span>
+                                            <span className={`font-bold text-lg ${
+                                              parseInt(equipment.quantity) > 0 ? 'text-green-600' : 'text-red-600'
+                                            }`}>
+                                                {equipment.quantity} units
+                                            </span>
+                                        </div>
+                                        {equipment.condition && (
+                                            <div className="flex justify-between items-center">
+                                                <span className="text-gray-600 text-sm">Condition:</span>
+                                                <span className={`px-2 py-1 rounded text-xs font-semibold ${
+                                                  equipment.condition === 'Good' ? 'bg-green-100 text-green-800' :
+                                                  equipment.condition === 'Fair' ? 'bg-yellow-100 text-yellow-800' :
+                                                  'bg-red-100 text-red-800'
+                                                }`}>
+                                                    {equipment.condition}
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
 
-                                    {/* Request Borrow - Student Only & Issue Counter Only */}
-                                    {inventoryType === 'used' && currentUser?.role === 'student' && (
+                                    {/* Action Buttons */}
+                                    {/* Show request button for students or simplified buttons for managers */}
+                                    {(currentUser?.role === 'student' || currentUser?.role === 'manager') && (
                                         <button
-                                            onClick={() => handleStudentRequest(equipment)}
-                                            className="w-full mt-4 bg-green-50 text-green-600 border border-green-200 px-4 py-2 rounded-lg font-semibold hover:bg-green-100 hover:border-green-300 transition-all flex items-center justify-center gap-2"
+                                            onClick={() => {
+                                                if (currentUser?.role === 'student') {
+                                                    handleStudentRequest(equipment);
+                                                } else if (inventoryType === 'used') {
+                                                    handleMarkAsDamaged(equipment);
+                                                } else {
+                                                    handleRequestMoveToUsed(equipment);
+                                                }
+                                            }}
+                                            disabled={parseInt(equipment.quantity) === 0}
+                                            className={`w-full py-3 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-md flex items-center justify-center gap-2 ${
+                                              parseInt(equipment.quantity) === 0
+                                                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                                                : 'bg-gradient-to-r from-primary to-primary-dark text-white hover:shadow-lg'
+                                            }`}
                                         >
                                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                             </svg>
-                                            Request to Borrow
+                                            {parseInt(equipment.quantity) === 0 
+                                                ? 'Out of Stock' 
+                                                : currentUser?.role === 'student' 
+                                                    ? 'Request Equipment' 
+                                                    : inventoryType === 'used' 
+                                                        ? 'Mark Damaged' 
+                                                        : 'Request Move to Used'}
                                         </button>
+                                    )}
+
+                                    {/* Edit and Delete buttons - hidden for admin users as per requirement */}
+                                    {currentUser?.role === 'admin' && (
+                                        <div className="hidden">
+                                            <button
+                                                onClick={() => handleEdit(equipment)}
+                                            >
+                                                Edit
+                                            </button>
+                                            <button
+                                                onClick={() => handleDelete(equipment.id)}
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
                                     )}
                                 </div>
                             </div>

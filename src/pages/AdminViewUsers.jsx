@@ -89,23 +89,23 @@ const AdminViewUsers = () => {
 
   return (
     <div className="min-h-screen pt-16 bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-primary to-primary-dark text-white py-8">
+      {/* Refined Red Header */}
+      <div className="bg-red-100 border-b border-red-200 py-4">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center gap-4">
             <button
               onClick={() => navigate('/admin-dashboard')}
-              className="bg-white bg-opacity-20 hover:bg-opacity-30 p-2 rounded-lg transition"
+              className="text-red-800 hover:bg-red-200 p-2 rounded-lg transition"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
             </button>
             <div>
-              <h1 className="text-3xl font-bold mb-2">
+              <h1 className="text-2xl font-bold text-red-800">
                 {userType === 'managers' ? 'All Managers' : 'All Students'}
               </h1>
-              <p className="text-gray-100">
+              <p className="text-red-600">
                 Total {userType}: {allUsers.length} | Showing: {filteredUsers.length}
               </p>
             </div>

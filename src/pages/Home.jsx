@@ -64,7 +64,7 @@ const Home = () => {
         </svg>
       ),
       subtext: `${stats.totalQuantity} total items`,
-      gradient: 'from-blue-500 to-blue-700',
+      gradient: 'from-red-500 to-red-600',
       link: '/equipments',
     },
     {
@@ -76,7 +76,7 @@ const Home = () => {
         </svg>
       ),
       subtext: 'Ready to issue',
-      gradient: 'from-green-500 to-green-700',
+      gradient: 'from-red-600 to-red-700',
       link: '/equipments',
     },
     {

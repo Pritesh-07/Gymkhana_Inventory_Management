@@ -162,21 +162,19 @@ const Overdue = () => {
     <div className="min-h-screen pt-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">
-              Overdue Equipments
-            </h1>
-            <p className="text-gray-600">
+            <h1 className="text-3xl font-bold text-gray-800">Overdue Equipment</h1>
+            <p className="text-gray-600 mt-2">
               Equipment past expected return date • {filteredOverdue.length} item(s)
             </p>
           </div>
           <button
             onClick={handleExportPDF}
-            className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition mt-4 md:mt-0"
+            className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-md flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
             disabled={filteredOverdue.length === 0}
           >
-            📥 Export to PDF
+           📄 Export to PDF
           </button>
         </div>
 
